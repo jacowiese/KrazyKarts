@@ -13,6 +13,13 @@ class KRAZYKARTS_API AGoKart : public APawn
 
 private:
 	FVector Velocity;
+
+	UPROPERTY(Replicated)
+	FVector ReplicatedPosition;
+
+	UPROPERTY(Replicated)
+	FQuat ReplicatedRotation;
+
 	float Throttle;
 	float SteeringThrow;
 
@@ -52,11 +59,10 @@ protected:
 
 public:	
 	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
+	void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	void MoveForward(float Val);
 
